@@ -133,10 +133,70 @@ The countties with the highest average number of ordered products are Montenegro
 
 SQL Queries:
 
+For Country:
+WITH CTE_table AS ( 
+
+	SELECT a.productsku,
+		   p.sku,
+		   v2ProductCategory,
+		   v2ProductName
+		   productprice,
+		   ROUND(updated_unitprice, 4),
+		   orderedQuantity,
+		   ROUND(updated_unitprice*orderedQuantity, 2) AS Revenue_per_product,
+		   country,
+		   city,
+		   transactionrevenue,
+		   totalTransactionRevenue
+	
+	FROM all_sessions AS a
+	JOIN products AS p ON a.productsku = p.sku
+)
+-- WINDOW FUNCTION
+SELECT 
+	 count(v2ProductCategory) AS count_productCategory,
+	 v2ProductCategory,
+	 country
+FROM CTE_table
+GROUP BY v2ProductCategory, country
+ORDER BY count_productCategory DESC
+
+For Cities:
+
+WITH CTE_table AS ( 
+
+	SELECT a.productsku,
+		   p.sku,
+		   v2ProductCategory,
+		   v2ProductName
+		   productprice,
+		   ROUND(updated_unitprice, 4),
+		   orderedQuantity,
+		   ROUND(updated_unitprice*orderedQuantity, 2) AS Revenue_per_product,
+		   country,
+		   city,
+		   transactionrevenue,
+		   totalTransactionRevenue
+	
+	FROM all_sessions AS a
+	JOIN products AS p ON a.productsku = p.sku
+)
+-- WINDOW FUNCTION
+SELECT 
+	 count(v2ProductCategory) AS count_productCategory,
+	 v2ProductCategory,
+	 city
+FROM CTE_table
+GROUP BY v2ProductCategory, city
+ORDER BY count_productCategory DESC
+
 
 
 Answer:
+For category by countries, the united states is leading consumer in most product categories. This could be due to lots of factors including population, booming economy, and consumer culture.
+United Kingdom, and  India are second and third highest consumers for Shop by Brand/YouTube.
 
+For categories by cities, for the data available, the most consumer-focused cities are Mountain View (Mens shirt, Nest, Electronics, Men's apparel, Shop by brand/Google and office), New York (Men's T-Shirts), London (Shop by Brand/YouTube), and San Francisco (Men's T-Shirt)
 
 
 
