@@ -67,13 +67,66 @@ ORDER BY total_revenue DESC
 
 SQL Queries:
 
+Query for cities with higest average number of products ordered:
+WITH CTE_table AS ( 
 
+	SELECT a.productsku,
+		   p.sku,
+		   productprice,
+		   ROUND(updated_unitprice, 4),
+		   orderedQuantity,
+		   ROUND(updated_unitprice*orderedQuantity, 2) AS Revenue_per_product,
+		   country,
+		   city,
+		   transactionrevenue,
+		   totalTransactionRevenue
+	
+	FROM all_sessions AS a
+	JOIN products AS p ON a.productsku = p.sku
+)
+
+SELECT ROUND(AVG(orderedquantity),4) AS AVG_orderdquantity,
+		SUM(revenue_per_product) AS revenue_sum,
+		count(orderedquantity) AS revenue_count,
+		SUM(revenue_per_product)/count(orderedquantity) AS AVG_revenue,
+	   city
+FROM CTE_table
+GROUP BY city
+ORDER BY AVG_orderdquantity DESC
+
+Query for countries with higest average number of products ordered:
+
+WITH CTE_table AS ( 
+
+	SELECT a.productsku,
+		   p.sku,
+		   productprice,
+		   ROUND(updated_unitprice, 4),
+		   orderedQuantity,
+		   ROUND(updated_unitprice*orderedQuantity, 2) AS Revenue_per_product,
+		   country,
+		   city,
+		   transactionrevenue,
+		   totalTransactionRevenue
+	
+	FROM all_sessions AS a
+	JOIN products AS p ON a.productsku = p.sku
+)
+
+SELECT ROUND(AVG(orderedquantity),4) AS AVG_orderdquantity,
+		SUM(revenue_per_product) AS revenue_sum,
+		count(orderedquantity) AS revenue_count,
+		SUM(revenue_per_product)/count(orderedquantity) AS AVG_revenue,
+	   country
+FROM CTE_table
+GROUP BY country
+ORDER BY AVG_orderdquantity DESC
 
 Answer:
 
+The cities with the highest average number of ordered products are Council Bluffs, Bellflower, Cork, Santiago, and Bellingham
 
-
-
+The countties with the highest average number of ordered products are Montenegro, Mali, Papua New Guinea, Reunion, and Georgia.
 
 **Question 3: Is there any pattern in the types (product categories) of products ordered from visitors in each city and country?**
 
