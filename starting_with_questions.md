@@ -307,7 +307,52 @@ The cities that bought the most of the items are Mountain View, New York, San Fr
 **Question 5: Can we summarize the impact of revenue generated from each city/country?**
 
 SQL Queries:
+WITH CTE_table AS ( 
 
+	SELECT a.productsku,
+		   p.sku,
+		   productprice,
+		   ROUND(updated_unitprice, 4),
+		   orderedQuantity,
+		   ROUND(updated_unitprice*orderedQuantity, 2) AS Revenue_per_product,
+		   country,
+		   city,
+		   transactionrevenue,
+		   totalTransactionRevenue
+	
+	FROM all_sessions AS a
+	JOIN products AS p ON a.productsku = p.sku
+)
+
+SELECT SUM(revenue_per_product) AS Total_Revenue,
+	   city
+FROM CTE_table
+GROUP BY city
+ORDER BY total_revenue DESC
+
+FOR COUNTRY:
+WITH CTE_table AS ( 
+
+	SELECT a.productsku,
+		   p.sku,
+		   productprice,
+		   ROUND(updated_unitprice, 4),
+		   orderedQuantity,
+		   ROUND(updated_unitprice*orderedQuantity, 2) AS Revenue_per_product,
+		   country,
+		   city,
+		   transactionrevenue,
+		   totalTransactionRevenue
+	
+	FROM all_sessions AS a
+	JOIN products AS p ON a.productsku = p.sku
+)
+
+SELECT SUM(revenue_per_product) AS Total_Revenue,
+	   country
+FROM CTE_table
+GROUP BY country
+ORDER BY total_revenue DESC
 
 
 Answer:
