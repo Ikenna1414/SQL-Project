@@ -1,17 +1,17 @@
 # Final-Project-Transforming-and-Analyzing-Data-with-SQL
 
 ## Project/Goals
-(fill in your description and goals here)
+The goal of this project is to provide data driven insight to a company to help maximize sales and profit.
 
 ## Process
-### (your step 1)
-### (your step 2)
+Step 1 - Data Normalization and cleaning
+Step 2 - Aggregation of data by countries, cities, products and product categories, to drive insight.
 
 ## Results
-(fill in what you discovered this data could tell you and how you used the data to answer those questions)
+From the analysis, the USA is a strong market for this company and drives a huge percentage of the company's revenue.
 
 ## Challenges 
-(discuss challenges you faced in the project)
+Lots of missing values in the database and the different tables are not already connected with private and foreign keys.
 
 ## Future Goals
-(what would you do if you had more time?)
+Recommendations for further analysis and research would be traffic sources that led viewers to the site in the first place as well as analysis of age range of customers who made the purchases.
