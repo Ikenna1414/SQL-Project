@@ -16,3 +16,5 @@ WHERE country is NULL
 
 
 I did thesame thing for city
+
+Another item that required cleaning is visitorId and fullvisitorid, but I did not require this in my queries.
