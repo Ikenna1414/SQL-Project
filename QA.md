@@ -11,6 +11,8 @@ On the actual tables, to control the number of decimal places, I used the ROUND 
 I tried to make sure that no country is NULL since I would be calculating total revenue per country
 
 SELECT *
-
 FROM all_sessions
 WHERE country is NULL
+
+
+I did thesame thing for city
