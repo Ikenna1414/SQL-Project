@@ -206,10 +206,100 @@ For categories by cities, for the data available, the most consumer-focused citi
 
 SQL Queries:
 
+QUERY FOR COUNTRY:
 
+WITH CTE_table AS ( 
+
+	SELECT a.productsku,
+		   p.sku as key1,
+		   v2ProductCategory,
+		   v2ProductName,
+		   productprice,
+		   ROUND(updated_unitprice, 4),
+		   orderedQuantity,
+		   ROUND(updated_unitprice*orderedQuantity, 2) AS Revenue_per_product,
+		   country,
+		   city,
+		   transactionrevenue,
+		   totalTransactionRevenue
+	
+	FROM all_sessions AS a
+	JOIN products AS p ON a.productsku = p.sku
+),
+
+CTE_summary AS (
+SELECT 
+	 count(v2ProductName) AS count_v2ProductName,
+	 v2ProductName,
+	 country,
+	 key1
+FROM CTE_table
+GROUP BY v2ProductName, country, key1
+ORDER BY count_v2ProductName DESC
+--ORDER BY country
+)
+,
+
+CTE_Final AS (
+SELECT DISTINCT ON (country)*
+FROM CTE_summary 
+ORDER BY country, count_v2ProductName DESC  
+)
+
+SELECT *
+FROM CTE_Final
+ORDER BY count_v2ProductName DESC
+
+QUERY FOR CITY:
+
+WITH CTE_table AS ( 
+
+	SELECT a.productsku,
+		   p.sku as key1,
+		   v2ProductCategory,
+		   v2ProductName,
+		   productprice,
+		   ROUND(updated_unitprice, 4),
+		   orderedQuantity,
+		   ROUND(updated_unitprice*orderedQuantity, 2) AS Revenue_per_product,
+		   country,
+		   city,
+		   transactionrevenue,
+		   totalTransactionRevenue
+	
+	FROM all_sessions AS a
+	JOIN products AS p ON a.productsku = p.sku
+),
+
+CTE_summary AS (
+SELECT 
+	 count(v2ProductName) AS count_v2ProductName,
+	 v2ProductName,
+	 city,
+	 key1
+FROM CTE_table
+GROUP BY v2ProductName, city, key1
+ORDER BY count_v2ProductName DESC
+--ORDER BY country
+)
+,
+
+CTE_Final AS (
+SELECT DISTINCT ON (city)*
+FROM CTE_summary 
+ORDER BY city, count_v2ProductName DESC  
+)
+
+SELECT *
+FROM CTE_Final
+ORDER BY count_v2ProductName DESC
 
 Answer:
+FOR COUNTRY:
+We can see that the USA gives the rest of the countries a huge margin with 163 shirts bought, second is the united Kingdom with 22 units of the bottle infuser bought, next is india, Germany and Canada
 
+FOR CITY:
+The cities that bought the most of the items are Mountain View, New York, San Francisco, and London
 
 
 
