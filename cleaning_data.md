@@ -10,6 +10,7 @@ Neither fullvisitorid nor visitorid are unique in the all_sessions table. This w
 
 sku is unique on the products table so I used this as the primary key. This can be verified by ensuring that the number of rows when you ``` SEELECT sku FROM products``` is equal to the number of rows when you ```SELECT DISTINCT sku FROM products```
 
+For the sales_report tabl, name is not unique because  when you ``` SEELECT name FROM sales_report``` and when you ```SELECT DISTINCT name FROM sales_report``` the number of rows are not equal.
 Queries:
 Below, provide the SQL queries you used to clean your data.
 
