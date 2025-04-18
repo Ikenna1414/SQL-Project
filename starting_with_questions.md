@@ -35,9 +35,11 @@ SELECT SUM(revenue_per_product) AS Total_Revenue,
 FROM CTE_table
 GROUP BY country
 ORDER BY total_revenue DESC
+```
 
 Query for city from where the most revenue is generated:
 
+``` SQL
 WITH CTE_table AS ( 
 
 	SELECT a.productsku,
@@ -91,14 +93,17 @@ WITH CTE_table AS (
 SELECT ROUND(AVG(orderedquantity),4) AS AVG_orderdquantity,
 		SUM(revenue_per_product) AS revenue_sum,
 		count(orderedquantity) AS revenue_count,
-		SUM(revenue_per_product)/count(orderedquantity) AS AVG_revenue,
+		ROUND(SUM(revenue_per_product)/count(orderedquantity),4) AS AVG_revenue,
 	   city
 FROM CTE_table
 GROUP BY city
 ORDER BY AVG_orderdquantity DESC
+```
+
+
 
 Query for countries with higest average number of products ordered:
-
+```SQL
 WITH CTE_table AS ( 
 
 	SELECT a.productsku,
@@ -119,7 +124,7 @@ WITH CTE_table AS (
 SELECT ROUND(AVG(orderedquantity),4) AS AVG_orderdquantity,
 		SUM(revenue_per_product) AS revenue_sum,
 		count(orderedquantity) AS revenue_count,
-		SUM(revenue_per_product)/count(orderedquantity) AS AVG_revenue,
+		ROUND(SUM(revenue_per_product)/count(orderedquantity),4) AS AVG_revenue,
 	   country
 FROM CTE_table
 GROUP BY country
