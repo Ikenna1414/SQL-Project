@@ -4,7 +4,7 @@ I see that there are alot of columns which I do not really need so I stripped th
 
 The value for unit price is alot and could be in a different currency. Normalized it all by dividing by 1 million.
 
-I can see that product price and product unit price are same
+I can see that product price and product unit price (once normalized) are same. So I eliminated one of those columns.
 
 
 Queries:
@@ -30,4 +30,8 @@ SELECT fullvisitorid,
 		pagetitle,
 		updated_unitprice
 FROM all_sessions;
+```
+```SQL
+SELECT productprice, updated_unitprice 
+FROM tt_all_sessions
 ```
