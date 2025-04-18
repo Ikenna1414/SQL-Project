@@ -8,6 +8,8 @@ I can see that product price and product unit price (once normalized) are same. 
 
 Neither fullvisitorid nor visitorid are unique in the all_sessions table. This was in an attempt to find a primary key for the table.
 
+sku is unique on the products table so I used this as the primary key. This can be verified by ensuring that the number of rows when you ``` SEELECT sku FROM products``` is equal to the number of rows when you ```SELECT DISTINCT sku FROM products```
+
 Queries:
 Below, provide the SQL queries you used to clean your data.
 
