@@ -14,11 +14,18 @@ The most ordered product is Ballpoint LED Light Pen which was ordered a total of
 
 
 Question 2: 
-
+What is the average number of products ordered by each country
 SQL Queries:
+```SQL
+SELECT country,
+        AVG(orderedquantity)
 
+FROM products JOIN all_sessions ON sku = productsku
+GROUP BY country
+ORDER BY AVG(orderedquantity) DESC
+```
 Answer:
-
+Montenegro has the highest average
 
 
 Question 3: 
