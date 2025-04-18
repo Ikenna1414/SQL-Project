@@ -39,3 +39,9 @@ FROM all_sessions;
 SELECT productprice, updated_unitprice 
 FROM tt_all_sessions
 ```
+```SQL
+CREATE OR REPLACE VIEW v_analytics AS
+SELECT fullvisitorid,
+		visitid,
+		ROUND(unit_price/1000000.0,4)
+```
