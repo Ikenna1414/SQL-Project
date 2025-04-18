@@ -45,7 +45,16 @@ Answer:
 
 
 Question 5: 
-
+What is the average number of products ordered by each city
 SQL Queries:
+```SQL
+SELECT city,
 
+	   AVG(orderedquantity)
+
+FROM products JOIN all_sessions ON sku = productsku
+GROUP BY city
+ORDER BY AVG(orderedquantity) DESC
+```
 Answer:
+Council Bluffs has the highest average order volume.
