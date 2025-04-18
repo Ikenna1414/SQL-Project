@@ -12,6 +12,7 @@ SQL Queries:
 
 Query for country from where the most revenue is generated:
 
+```SQL
 WITH CTE_table AS ( 
 
 	SELECT a.productsku,
@@ -60,7 +61,7 @@ FROM CTE_table
 GROUP BY city
 ORDER BY total_revenue DESC
 
-
+```
 
 **Question 2: What is the average number of products ordered from visitors in each city and country?**
 
@@ -68,6 +69,8 @@ ORDER BY total_revenue DESC
 SQL Queries:
 
 Query for cities with higest average number of products ordered:
+
+```SQL
 WITH CTE_table AS ( 
 
 	SELECT a.productsku,
@@ -121,7 +124,7 @@ SELECT ROUND(AVG(orderedquantity),4) AS AVG_orderdquantity,
 FROM CTE_table
 GROUP BY country
 ORDER BY AVG_orderdquantity DESC
-
+```
 Answer:
 
 The cities with the highest average number of ordered products are Council Bluffs, Bellflower, Cork, Santiago, and Bellingham
@@ -133,7 +136,10 @@ The countties with the highest average number of ordered products are Montenegro
 
 SQL Queries:
 
+
 For Country:
+
+```SQL
 WITH CTE_table AS ( 
 
 	SELECT a.productsku,
@@ -161,8 +167,11 @@ FROM CTE_table
 GROUP BY v2ProductCategory, country
 ORDER BY count_productCategory DESC
 
+```
+
 For Cities:
 
+```SQL
 WITH CTE_table AS ( 
 
 	SELECT a.productsku,
@@ -189,7 +198,7 @@ SELECT
 FROM CTE_table
 GROUP BY v2ProductCategory, city
 ORDER BY count_productCategory DESC
-
+```
 
 
 Answer:
@@ -208,6 +217,7 @@ SQL Queries:
 
 QUERY FOR COUNTRY:
 
+```SQL
 WITH CTE_table AS ( 
 
 	SELECT a.productsku,
@@ -249,9 +259,11 @@ ORDER BY country, count_v2ProductName DESC
 SELECT *
 FROM CTE_Final
 ORDER BY count_v2ProductName DESC
+```
 
 QUERY FOR CITY:
 
+```SQL
 WITH CTE_table AS ( 
 
 	SELECT a.productsku,
@@ -293,6 +305,7 @@ ORDER BY city, count_v2ProductName DESC
 SELECT *
 FROM CTE_Final
 ORDER BY count_v2ProductName DESC
+```
 
 Answer:
 FOR COUNTRY:
@@ -307,6 +320,8 @@ The cities that bought the most of the items are Mountain View, New York, San Fr
 **Question 5: Can we summarize the impact of revenue generated from each city/country?**
 
 SQL Queries:
+
+```SQL
 WITH CTE_table AS ( 
 
 	SELECT a.productsku,
@@ -329,8 +344,11 @@ SELECT SUM(revenue_per_product) AS Total_Revenue,
 FROM CTE_table
 GROUP BY city
 ORDER BY total_revenue DESC
+```
 
 FOR COUNTRY:
+
+```SQL
 WITH CTE_table AS ( 
 
 	SELECT a.productsku,
@@ -353,7 +371,7 @@ SELECT SUM(revenue_per_product) AS Total_Revenue,
 FROM CTE_table
 GROUP BY country
 ORDER BY total_revenue DESC
-
+```
 
 Answer:
 

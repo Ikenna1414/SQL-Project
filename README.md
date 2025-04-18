@@ -4,11 +4,14 @@
 The goal of this project is to provide data driven insight to a company to help maximize sales and profit.
 
 ## Process
-Step 1 - Data Normalization and cleaning
-Step 2 - Aggregation of data by countries, cities, products and product categories, to drive insight.
+1. Data Normalization and cleaning
+2. Aggregation of data by countries, cities, products and product categories, to drive insight.
 
 ## Results
 From the analysis, the USA is a strong market for this company and drives a huge percentage of the company's revenue.
+
+### Schema
+![schema](SQL Project Schema Updated.png)
 
 ## Challenges 
 Lots of missing values in the database and the different tables are not already connected with private and foreign keys.
