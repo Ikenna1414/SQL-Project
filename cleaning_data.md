@@ -11,6 +11,9 @@ Neither fullvisitorid nor visitorid are unique in the all_sessions table. This w
 sku is unique on the products table so I used this as the primary key. This can be verified by ensuring that the number of rows when you ``` SEELECT sku FROM products``` is equal to the number of rows when you ```SELECT DISTINCT sku FROM products```
 
 For the sales_report tabl, name is not unique because  when you ``` SEELECT name FROM sales_report``` and when you ```SELECT DISTINCT name FROM sales_report``` the number of rows are not equal.
+
+Within the all_sessions table, I checked to see if there are rows where country is NULL. If I can identify the city, then I can fill in the country.
+
 Queries:
 Below, provide the SQL queries you used to clean your data.
 
@@ -44,4 +47,10 @@ CREATE OR REPLACE VIEW v_analytics AS
 SELECT fullvisitorid,
 		visitid,
 		ROUND(unit_price/1000000.0,4)
+```
+```SQL
+ SELECT country, city
+FROM all_sessions
+WHERE country is NULL
+GROUP BY country, city
 ```
