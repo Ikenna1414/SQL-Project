@@ -1,4 +1,5 @@
 What issues will you address by cleaning the data?
+
 The value for unit price is alot and could be in a different currency. Normalized it all by dividing by 1 million.
 
 
