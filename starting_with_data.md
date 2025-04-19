@@ -47,11 +47,18 @@ The product with the least stock level among the top 5 most ordered products is 
 
 
 Question 4: 
-
+What product category gets most ordered
 SQL Queries:
+```SQL
+SELECT v2productcategory,
+		SUM(orderedquantity) AS sum_of_ordered_quantity
 
+FROM all_sessions JOIN products ON productsku = sku
+GROUP BY v2productcategory
+ORDER BY sum_of_ordered_quantity DESC
+```
 Answer:
-
+The product category which has been ordered the most is Home/Shop by Brand/YouTube/
 
 
 Question 5: 
