@@ -18,7 +18,7 @@ What is the average number of products ordered by each country
 SQL Queries:
 ```SQL
 SELECT country,
-        AVG(orderedquantity)
+        ROUND(AVG(orderedquantity),4)
 
 FROM products JOIN all_sessions ON sku = productsku
 GROUP BY country
