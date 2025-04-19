@@ -67,7 +67,7 @@ SQL Queries:
 ```SQL
 SELECT city,
 
-	   AVG(orderedquantity)
+	   ROUND(AVG(orderedquantity),4)
 
 FROM products JOIN all_sessions ON sku = productsku
 GROUP BY city
