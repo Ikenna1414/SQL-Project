@@ -29,11 +29,21 @@ Montenegro has the highest average
 
 
 Question 3: 
-
+From the top 5 most ordered products, identify the product with the least stock level
 SQL Queries:
+```SQL
+SELECT name,
+		stocklevel,
+		orderedquantity
 
+FROM (SELECT * 
+FROM products 
+ORDER BY orderedquantity DESC 
+LIMIT 5)
+ORDER BY stocklevel
+```
 Answer:
-
+The product with the least stock level among the top 5 most ordered products is Kick Ball with a stock level of 723
 
 
 Question 4: 
